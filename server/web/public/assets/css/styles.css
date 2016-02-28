@@ -1,0 +1,11 @@
+body {
+       font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+h1 { font-weight: normal; }
+a:visited { color: inherit; }
+
+
+.albums {
+    list-style-type: none;
+}

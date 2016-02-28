@@ -1,25 +1,5 @@
 'use strict';
 
-const name = 'activities';
-const path = '/api/' + name;
+const setupEndpoint = require('./setup/setup.js');
 
-const json = require('../../json-templates/' + name);
-
-exports.register = function (server, options, next) {
-
-    server.route({
-        method: 'GET',
-        path: path,
-        handler: function (request, reply) {
-            return reply(json).type('text/plain');
-        }
-    });
-
-    next();
-};
-
-
-exports.register.attributes = {
-    name: name,
-    path: path
-};
+module.exports = setupEndpoint('activities');

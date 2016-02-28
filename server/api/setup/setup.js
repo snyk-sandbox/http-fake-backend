@@ -1,11 +1,10 @@
 'use strict';
 
-module.exports = function(name) {
+module.exports = function (name) {
+
     const path = '/api/' + name;
-
     const json = require('../../../json-templates/' + name);
-
-    let exportEndpoint = {};
+    const exportEndpoint = {};
 
     exportEndpoint.register = function (server, options, next) {
 
@@ -13,13 +12,13 @@ module.exports = function(name) {
             method: 'GET',
             path: path,
             handler: function (request, reply) {
+
                 return reply(json).type('text/plain');
             }
         });
 
         next();
     };
-
 
     exportEndpoint.register.attributes = {
         name: name,

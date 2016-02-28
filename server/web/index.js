@@ -5,13 +5,15 @@ const apiDir = requireDir('../api');
 
 
 const getEndpoints = function (request, reply) {
-    let returnvalue = [];
 
-    Object.keys(apiDir).forEach(function(key) {
-        returnvalue.push(apiDir[key].register.attributes);
+    const endpoints = [];
+
+    Object.keys(apiDir).forEach((key) => {
+
+        endpoints.push(apiDir[key].register.attributes);
     });
 
-    return reply(returnvalue);
+    return reply(endpoints);
 };
 
 exports.register = function (server, options, next) {

@@ -57,7 +57,7 @@ lab.experiment('Home Page View', () => {
 
         server.inject(request, (response) => {
 
-            Code.expect(response.result).to.match(/flickr gallery - home/i);
+            Code.expect(response.result).to.match(/swo fake api - home/i);
             Code.expect(response.statusCode).to.equal(200);
 
             done();

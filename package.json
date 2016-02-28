@@ -1,8 +1,9 @@
 {
-  "name": "flickr-gallery",
+  "name": "swo-fake-api",
   "version": "0.0.0",
-  "description": "A flickr gallery with OAuth login to provide comments and favorites via the flicker API",
+  "description": "Fake API providing dummy data for the swo-frontend",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "start": "node server.js",
     "start:dev": "nodemon server.js",
@@ -10,10 +11,7 @@
     "coverage": "lab -v -c -r html -o ./test/artifacts/coverage.html && open ./test/artifacts/coverage.html",
     "coveralls": "lab -r lcov | ./node_modules/.bin/coveralls"
   },
-  "repository": "mischah/flickr-gallery",
-  "author": "Michael Kühnel <mail@michael-kuehnel.de>",
-  "license": "MIT",
-  "homepage": "https://github.com/mischah/flickr-gallery",
+  "author": "Michael Kühnel <m.kuehnel@micromata.de>",
   "engines": {
     "node": ">=4.0.0"
   },

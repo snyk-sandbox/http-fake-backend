@@ -69,7 +69,8 @@ const manifest = {
         { plugin: 'inert' },
         { plugin: './server/web/index' },
         { plugin: './server/web/public' },
-        { plugin: './server/api/activities' }
+        { plugin: './server/api/activities' },
+        { plugin: './server/api/messages' }
     ]
 };
 

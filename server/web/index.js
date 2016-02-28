@@ -1,10 +1,17 @@
 'use strict';
 
-const activitiesAttributes = require('../api/activities').register.attributes;
+const requireDir = require('require-dir');
+const apiDir = requireDir('../api');
+
 
 const getEndpoints = function (request, reply) {
+    let returnvalue = [];
 
-    return reply([activitiesAttributes]);
+    Object.keys(apiDir).forEach(function(key) {
+        returnvalue.push(apiDir[key].register.attributes);
+    });
+
+    return reply(returnvalue);
 };
 
 exports.register = function (server, options, next) {

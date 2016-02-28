@@ -20,13 +20,13 @@
   "dependencies": {
     "confidence": "^1.x.x",
     "dotenv": "^2.0.0",
-    "flickrapi": "^0.4.1",
     "glue": "^3.x.x",
     "good": "^6.6.0",
     "good-console": "^5.3.1",
     "handlebars": "^4.0.5",
     "hapi": "^13.x.x",
     "inert": "^3.2.0",
+    "require-dir": "^0.3.0",
     "vision": "^4.x.x",
     "visionary": "^4.x.x"
   },

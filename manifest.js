@@ -20,7 +20,8 @@ const manifest = {
                 security: true
             },
             router: {
-                stripTrailingSlash: true
+                stripTrailingSlash: true,
+                isCaseSensitive: false
             }
         }
     },

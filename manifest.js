@@ -18,6 +18,9 @@ const manifest = {
         connections: {
             routes: {
                 security: true
+            },
+            router: {
+                stripTrailingSlash: true
             }
         }
     },

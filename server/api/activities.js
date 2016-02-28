@@ -1,5 +1,7 @@
 'use strict';
 
+const path = '/api/activities';
+
 const getData = function (request, reply) {
 
     return reply({
@@ -36,7 +38,7 @@ exports.register = function (server, options, next) {
 
     server.route({
         method: 'GET',
-        path: '/api/activities',
+        path: path,
         config: {
             pre: [{
                 method: getData,
@@ -56,5 +58,5 @@ exports.register = function (server, options, next) {
 
 exports.register.attributes = {
     name: 'activities',
-    dependencies: 'visionary'
+    path: path
 };

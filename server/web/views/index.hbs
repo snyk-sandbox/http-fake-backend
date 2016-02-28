@@ -4,7 +4,9 @@
 
 <nav>
     <ul>
-        <li><a href="/api/activities">activities</a></li>
+        {{#each endpoints}}
+            <li><a href="{{this.path}}">{{this.name}}</a></li>
+        {{/each}}
     </ul>
 </nav>
 

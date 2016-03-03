@@ -17,7 +17,11 @@ const manifest = {
         },
         connections: {
             routes: {
-                security: true
+                security: true,
+                cors: {
+                    origin: ['*'],
+                    credentials: true
+                }
             },
             router: {
                 stripTrailingSlash: true,

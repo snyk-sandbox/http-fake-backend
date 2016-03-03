@@ -1,7 +1,7 @@
 'use strict';
 
-const requireDir = require('require-dir');
-const apiDir = requireDir('../api');
+const RequireDir = require('require-dir');
+const apiDir = RequireDir('../api');
 
 
 const getEndpoints = function (request, reply) {

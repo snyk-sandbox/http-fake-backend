@@ -4,10 +4,15 @@
 
 {{!-- <pre><code>{{json endpoints}}</code></pre> --}}
 
-<nav>
+<nav class="endpoints">
     <ul>
         {{#each endpoints}}
-            <li><a href="{{this.path}}">{{this.name}}</a></li>
+            {{#each this.urls}}
+                <li>
+                    <a href="{{../this.path}}{{removeCurlyBraces this.params}}">{{../this.name}}{{this.params}}</a>
+                    <span class="method">({{this.method}})</span>
+                </li>
+            {{/each}}
         {{/each}}
     </ul>
 </nav>

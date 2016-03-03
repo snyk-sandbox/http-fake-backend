@@ -1,11 +1,18 @@
 body {
-       font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
-
 h1 { font-weight: normal; }
+
 a:visited { color: inherit; }
 
-
-.albums {
-    list-style-type: none;
+.endpoints ul { padding-left: 0.6em; }
+.endpoints li { list-style-type: none; }
+.endpoints li:before {
+    content: "–";
+    margin-right: 0.5em;
+}
+.endpoints .method {
+    display: inline-block;
+    font-family: "Courier New", Courier, monospace;
+    width: 50px;
 }

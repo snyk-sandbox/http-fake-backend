@@ -1,5 +1,15 @@
 'use strict';
 
-const setupEndpoint = require('./setup/setup.js');
+const SetupEndpoint = require('./setup/setup.js');
 
-module.exports = setupEndpoint('activities');
+module.exports = SetupEndpoint({
+    name: 'activities',
+    urls: [
+        {
+            params: '',
+            templateFile: 'activities.json',
+            method: 'GET'
+        }
+    ]/*,
+    statusCode: 505*/
+});

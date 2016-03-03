@@ -15,8 +15,8 @@ const config = {
     port: {
         web: {
             $filter: 'env',
-            test: 9090,
-            $default: 8081
+            test: process.env.TEST_PORT,
+            $default: process.env.SERVER_PORT
         }
     }
 };

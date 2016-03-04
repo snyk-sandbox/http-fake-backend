@@ -5,6 +5,10 @@ h1 { font-weight: normal; }
 
 a:visited { color: inherit; }
 
+.hidden {
+    display: none;
+}
+
 .endpoints ul { padding-left: 0.6em; }
 .endpoints li { list-style-type: none; }
 .endpoints li:before {

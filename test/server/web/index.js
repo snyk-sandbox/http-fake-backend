@@ -63,4 +63,17 @@ lab.experiment('Home Page View', () => {
             done();
         });
     });
+
+    lab.test('endpoints are delivered to the view', (done) => {
+
+        server.inject(request, (response) => {
+
+            const endpointsInView = response.result.match(/<code>(.+)<\/code>/)[1];
+            const endpointsInController = JSON.stringify(response.request.preResponses.getEndpoints.source);
+
+            Code.expect(endpointsInController).to.equal(endpointsInView);
+
+            done();
+        });
+    });
 });

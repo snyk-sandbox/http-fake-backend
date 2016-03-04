@@ -3,13 +3,13 @@
 const SetupEndpoint = require('./setup/setup.js');
 
 module.exports = SetupEndpoint({
-    name: 'activities',
+    name: 'foo',
     urls: [
         {
             params: '',
-            templateFile: 'activities.json',
+            templateFile: 'foo.json',
             method: 'GET'
         }
     ]/*,
-    statusCode: 505*/
+    statusCode: 401*/
 });

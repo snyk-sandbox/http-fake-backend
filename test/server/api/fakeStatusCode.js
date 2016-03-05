@@ -10,7 +10,6 @@ const Endpoint = SetupEndpoint({
     name: 'statuscode',
     urls: [
         {
-            params: '',
             templateFile: 'foo.json'
         }
     ],
@@ -41,17 +40,30 @@ lab.experiment('Fake status code', () => {
 
     lab.beforeEach((done) => {
 
+        done();
+    });
+
+    lab.test('endpoint returns correct faked status code', (done) => {
+
         request = {
             method: 'GET',
             url: '/api/statuscode'
         };
 
-        done();
+        server.inject(request, (response) => {
+
+            Code.expect(response.statusCode).to.equal(401);
+
+            done();
+        });
     });
 
+    lab.test('undefined method returns correct faked status code', (done) => {
 
-    lab.test('endpoint returns correct faked status code', (done) => {
-
+        request = {
+            method: 'PUT',
+            url: '/api/statuscode'
+        };
 
         server.inject(request, (response) => {
 

@@ -9,6 +9,6 @@ module.exports = SetupEndpoint({
             params: '',
             templateFile: 'foo.json'
         }
-    ]/*,
-    statusCode: 401*/
+    ],
+    statusCode: 401
 });

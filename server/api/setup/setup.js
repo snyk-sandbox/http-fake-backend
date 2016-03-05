@@ -15,9 +15,10 @@ module.exports = function (settings) {
         const createRoutes = function (url, index) {
 
             const method = url.method || 'GET';
+            const params = url.params || '';
             const supportedMethod = {
-                method: method || 'GET',
-                path: path + url.params || '',
+                method: method,
+                path: path + params,
                 handler: function (request, reply) {
 
                     let response;
@@ -37,7 +38,7 @@ module.exports = function (settings) {
             };
             const unsupportedMethods = {
                 method: '*',
-                path: path + url.params || '',
+                path: path + params,
                 handler: function (request, reply) {
 
                     let response;

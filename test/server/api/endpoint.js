@@ -10,9 +10,7 @@ const Endpoint = SetupEndpoint({
     name: 'endpoint',
     urls: [
         {
-            params: '',
-            templateFile: 'bar.json',
-            method: 'GET'
+            templateFile: 'success.json'
         },
         {
             params: '/read',
@@ -71,6 +69,41 @@ lab.experiment('Setup endpoints', () => {
         server.inject(request, (response) => {
 
             Code.expect(response.statusCode).to.equal(404);
+
+            done();
+        });
+    });
+
+    lab.test('returns 405: Method Not Allowed for undefined methods', (done) => {
+
+        request = {
+            method: 'POST',
+            url: '/api/endpoint'
+        };
+
+        server.inject(request, (response) => {
+
+            Code.expect(response.statusCode).to.equal(405);
+            Code.expect(response.result).to.deep.equal({
+                statusCode: 405,
+                error: 'Method Not Allowed'
+            });
+
+            done();
+        });
+    });
+
+    lab.test('get returns correct json', (done) => {
+
+        request = {
+            method: 'GET',
+            url: '/api/endpoint'
+        };
+
+        server.inject(request, (response) => {
+
+            Code.expect(response.statusCode).to.equal(200);
+            Code.expect(response.result).to.deep.equal({ success: true });
 
             done();
         });

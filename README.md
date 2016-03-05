@@ -80,27 +80,26 @@ TEST_PORT=9090
 
 Each endpoint needs the following:
 
-* a dummy JSON file in `/json-templates/`
+* a JSON template file in `/json-templates/`
 	* This JSON will be returned by the endpoint.
-* a server plugin in `/manifest.js`
 * a configuration file in `/server/api/`
 
 ### Example configuration
 
-`/server/api/login.js`:
+`/server/api/articles.js`:
 
 ```js
 module.exports = SetupEndpoint({
-    name: 'articleList',
+    name: 'articles',
     urls: [
         {
             params: '/{filter}/{offset}/{items}',
-            templateFile: 'articleList.json',
+            templateFile: 'articles.json',
             method: 'GET'
         },
         {
             params: '/post',
-            templateFile: 'closemessage.json',
+            templateFile: 'success.json',
             method: 'POST'
         }
     ],
@@ -110,7 +109,7 @@ module.exports = SetupEndpoint({
 
 The configuration object in Detail:
 
-* `name: 'articleList'`  
+* `name: 'articles'`  
 	* Is used to set the endpoint.
 * `urls`
 	* You need add least one url object.
@@ -121,9 +120,9 @@ The configuration object in Detail:
 	* Optional
 	* The endpoint will need the amount of params within the URL if defined.
 	* In this example a valid URL might be:
-	  `http://localhost:8081/api/articleList/foo/bar/baz`
+	  `http://localhost:8081/api/articles/foo/bar/baz`
 	  whereas:
-	  `http://localhost:8081/api/articleList` will return a 404 error.
+	  `http://localhost:8081/api/articles` will return a 404 error.
 * `statusCode: 401`
 	* Optional
 	* Every rout of this endpoint will return a http error with the given status code.

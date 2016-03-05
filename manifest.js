@@ -2,12 +2,14 @@
 
 const Confidence = require('confidence');
 const Config = require('./config');
-
+const Fs = require('fs');
+const Path = require('path');
 
 const criteria = {
     env: process.env.NODE_ENV
 };
 
+const pathToEndpointConfigFiles = './server/api';
 
 const manifest = {
     $meta: 'Hapi server config used by glue to compose the server.',
@@ -72,12 +74,22 @@ const manifest = {
         },
         { plugin: 'inert' },
         { plugin: './server/web/index' },
-        { plugin: './server/web/public' },
-        { plugin: './server/api/foo' },
-        { plugin: './server/api/bar' }
+        { plugin: './server/web/public' }
     ]
 };
 
+// Add plugins to manifest.registration for every endpoint in ./server/api
+Fs.readdirSync(pathToEndpointConfigFiles).map((file) => {
+
+    return Path.join(pathToEndpointConfigFiles, file);
+}).filter((file) => {
+
+    return Fs.statSync(file).isFile();
+}).forEach((file) => {
+
+    const plugin = { plugin: './server/api/' + Path.parse(file).name };
+    manifest.registrations.push(plugin);
+});
 
 const store = new Confidence.Store(manifest);
 

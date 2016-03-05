@@ -6,7 +6,7 @@ module.exports = SetupEndpoint({
     name: 'bar',
     urls: [
         {
-            params: '/read/{id}',
+            params: '/read',
             templateFile: 'bar.json',
             method: 'GET'
         },

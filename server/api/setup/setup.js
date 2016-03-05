@@ -2,13 +2,6 @@
 
 const Boom = require('boom');
 
-const fakeStatusCode = function (reply, statusCode) {
-
-    if (statusCode) {
-        return reply(Boom.create(statusCode));
-    }
-};
-
 module.exports = function (settings) {
 
     const exportEndpoint = {};
@@ -27,15 +20,19 @@ module.exports = function (settings) {
                 path: path + url.params || '',
                 handler: function (request, reply) {
 
-                    let response = Boom.methodNotAllowed();
-                    fakeStatusCode(reply, settings.statusCode);
+                    let response;
 
-                    if (method === 'post') {
-                        server.log('info', 'Received POST:' + JSON.stringify(request.payload));
+                    if (settings.statusCode) {
+                        response = Boom.create(settings.statusCode);
+                    }
+                    else {
+                        if (method === 'POST') {
+                            server.log('info', 'Received POST:' + JSON.stringify(request.payload));
+                        }
+                        response = require('../../../json-templates/' + url.templateFile);
                     }
 
-                    response = require('../../../json-templates/' + url.templateFile);
-                    return reply(response).type('text/plain');
+                    return reply(response);
                 }
             };
             const unsupportedMethods = {
@@ -43,8 +40,16 @@ module.exports = function (settings) {
                 path: path + url.params || '',
                 handler: function (request, reply) {
 
-                    fakeStatusCode(reply, settings.statusCode);
-                    return reply(Boom.methodNotAllowed());
+                    let response;
+
+                    if (settings.statusCode) {
+                        response = Boom.create(settings.statusCode);
+                    }
+                    else {
+                        response = Boom.methodNotAllowed();
+                    }
+
+                    return reply(response);
                 }
             };
 

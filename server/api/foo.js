@@ -7,8 +7,7 @@ module.exports = SetupEndpoint({
     urls: [
         {
             params: '',
-            templateFile: 'foo.json',
-            method: 'GET'
+            templateFile: 'foo.json'
         }
     ]/*,
     statusCode: 401*/

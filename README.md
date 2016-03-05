@@ -1,17 +1,37 @@
-# SWO Fake API
+# http-fake-backend
 
-> Fake API providing dummy data for the swo-frontend
+> Build a fake backend by providing the content of JSON files through configurable routes.
+
+Comes as a Node.js server. Useful for mocking, testing and developing independent of the »real« backend.
+
+## Example
+Let’s say you need an endpoint like <http://localhost:8081/api/foo> which should return:
+
+```
+{
+  "response": "Yeah"
+}
+```
+
+It’s a matter of seconds to create this endpoint with help of this little hapi server and a JSON file.
+
+It might take a few seconds longer as setting up the well-made [JSON Server](https://github.com/typicode/json-server) but it’s way more flexible.
+
+## Requirements
+
+- Node.js (v4.0.0 or greater)
 
 ## Install
 
 ```
-npm install
+$ git clone https://github.com/micromata/http-fake-backend.git
+$ npm install
 ```
 
 ## Default Address
 The server runs at <http://localhost:8081/> providing a page with links to all existing API endpoints.
 
-## Start server
+## Start the server
 
 There are the following two options.
 
@@ -25,7 +45,7 @@ This way the server uses `nodemon` to restart itself on changes.
 This way you dont have to restart the server in case you changed an endpoint. 
 
 
-### Later (eg. for test in CI)
+### Later (eg. for tests in CI)
 
 ```
 npm start
@@ -52,7 +72,7 @@ TEST_PORT=9090
 
 ## Configuring endpoints
 
-Each endpoint need the following:
+Each endpoint needs the following:
 
 * a dummy JSON file in `/json-templates/`
 	* This JSON will be returned by the endpoint.
@@ -85,9 +105,12 @@ module.exports = SetupEndpoint({
 The configuration object in Detail:
 
 * `name: 'articleList'`  
-	* Is used to set the endpoint (the first part of the url in case you use params)
-* `urls` You need add least one url object
-* `urls.method: 'GET'` is used to define the http method to which the endpoint will listen.
+	* Is used to set the endpoint.
+* `urls`
+	* You need add least one url object.
+* `urls.method: 'GET'` 
+	* optional. Uses `GET` when not defined.
+	* is used to define the http method to which the endpoint will listen.
 * `urls.params: '/{filter}/{offset}/{items}'`
 	* Optional
 	* The endpoint will need the amount of params within the URL if defined.
@@ -97,6 +120,8 @@ The configuration object in Detail:
 	  `http://localhost:8081/api/articleList` will return a 404 error.
 * `statusCode: 401`
 	* Optional
-	* The endpoint will return a http error with the given status code inplace of json template.
+	* Every rout of this endpoint will return a http error with the given status code.
 
+## Related
 
+* [JSON Server](https://github.com/typicode/json-server) – an easy to use but less flexible alternative to server json files.

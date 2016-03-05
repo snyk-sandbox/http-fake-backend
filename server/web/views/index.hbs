@@ -1,6 +1,6 @@
 {{> header}}
 
-<h1>Endpoints</h1>
+<h1>Endpoints / Routes</h1>
 
 <pre class="hidden"><code>{{{json endpoints}}}</code></pre>
 
@@ -10,7 +10,7 @@
             {{#each this.urls}}
                 <li>
                     <a href="{{../this.path}}{{removeCurlyBraces this.params}}">{{../this.name}}{{this.params}}</a>
-                    <span class="method">({{this.method}})</span>
+                    <span class="method">({{method this.method}})</span>
                 </li>
             {{/each}}
         {{/each}}

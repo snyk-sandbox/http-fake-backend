@@ -1,8 +1,12 @@
 {
-  "name": "swo-fake-api",
+  "name": "http-fake-backend",
   "version": "0.0.0",
-  "description": "Fake API providing dummy data for the swo-frontend",
+  "description": "Build a fake backend by providing the content of JSON files through configurable routes",
+  "license": "MIT",
   "main": "index.js",
+  "homepage": "https://github.com/micromata/http-fake-backend",
+  "repository": "micromata/http-fake-backend",
+  "author": "Michael Kühnel <m.kuehnel@micromata.de>",
   "private": true,
   "scripts": {
     "start": "node server.js",
@@ -11,7 +15,6 @@
     "coverage": "lab -v -c -r html -o ./test/artifacts/coverage.html && open ./test/artifacts/coverage.html",
     "coveralls": "lab -r lcov | ./node_modules/.bin/coveralls"
   },
-  "author": "Michael Kühnel <m.kuehnel@micromata.de>",
   "engines": {
     "node": ">=4.0.0"
   },

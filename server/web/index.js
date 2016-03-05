@@ -29,7 +29,7 @@ exports.register = function (server, options, next) {
             handler: function (request, reply) {
 
                 return reply.view('index', {
-                    title: 'Home',
+                    title: 'endpoints / routes',
                     endpoints: request.pre.getEndpoints
                 });
             }

@@ -10,13 +10,13 @@ const criteria = {
 
 const config = {
     $meta: 'General project wide config.',
-    projectName: 'swo-fake-api',
+    projectName: 'http-fake-backend',
     env: process.env.NODE_ENV,
     port: {
         web: {
             $filter: 'env',
-            test: process.env.TEST_PORT,
-            $default: process.env.SERVER_PORT
+            test: 9090,
+            $default: 8081
         }
     }
 };

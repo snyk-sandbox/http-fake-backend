@@ -5,6 +5,11 @@ h1 { font-weight: normal; }
 
 a:visited { color: inherit; }
 
+footer {
+    border-top: 1px solid #dedede;
+    padding-top: 1em;
+}
+
 .hidden {
     display: none;
 }

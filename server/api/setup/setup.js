@@ -30,7 +30,7 @@ module.exports = function (settings) {
                         if (method === 'POST') {
                             server.log('info', 'Received POST:' + JSON.stringify(request.payload));
                         }
-                        response = require('../../../json-templates/' + url.templateFile);
+                        response = require('../../..' + url.templateFile);
                     }
 
                     return reply(response);

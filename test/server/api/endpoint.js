@@ -10,21 +10,21 @@ const Endpoint = SetupEndpoint({
     name: 'endpoint',
     urls: [
         {
-            templateFile: 'success.json'
+            templateFile: '/test/server/api/fixtures/response.json'
         },
         {
             params: '/read',
-            templateFile: 'bar.json',
+            templateFile: '/test/server/api/fixtures/response.json',
             method: 'GET'
         },
         {
             params: '/update/{id}',
-            templateFile: 'success.json',
+            templateFile: '/test/server/api/fixtures/response.json',
             method: 'POST'
         },
         {
             params: '/delete/{id}',
-            templateFile: 'success.json',
+            templateFile: '/test/server/api/fixtures/response.json',
             method: 'DELETE'
         }
     ]
@@ -63,7 +63,7 @@ lab.experiment('Setup endpoints', () => {
 
         request = {
             method: 'POST',
-            url: '/api/schnasel'
+            url: '/api/baz'
         };
 
         server.inject(request, (response) => {
@@ -77,8 +77,8 @@ lab.experiment('Setup endpoints', () => {
     lab.test('returns 405: Method Not Allowed for undefined methods', (done) => {
 
         request = {
-            method: 'POST',
-            url: '/api/endpoint'
+            method: 'post',
+            url: '/api/endpoint/read'
         };
 
         server.inject(request, (response) => {
@@ -93,7 +93,7 @@ lab.experiment('Setup endpoints', () => {
         });
     });
 
-    lab.test('get returns correct json', (done) => {
+    lab.test('params and method are optional', (done) => {
 
         request = {
             method: 'GET',
@@ -103,13 +103,29 @@ lab.experiment('Setup endpoints', () => {
         server.inject(request, (response) => {
 
             Code.expect(response.statusCode).to.equal(200);
-            Code.expect(response.result).to.deep.equal({ success: true });
+            Code.expect(response.result).to.deep.equal({ response: 'Yeah' });
 
             done();
         });
     });
 
-    lab.test('post returns correct json', (done) => {
+    lab.test('GET returns correct json', (done) => {
+
+        request = {
+            method: 'GET',
+            url: '/api/endpoint/read'
+        };
+
+        server.inject(request, (response) => {
+
+            Code.expect(response.statusCode).to.equal(200);
+            Code.expect(response.result).to.deep.equal({ response: 'Yeah' });
+
+            done();
+        });
+    });
+
+    lab.test('POST returns correct json', (done) => {
 
         request = {
             method: 'POST',
@@ -119,7 +135,23 @@ lab.experiment('Setup endpoints', () => {
         server.inject(request, (response) => {
 
             Code.expect(response.statusCode).to.equal(200);
-            Code.expect(response.result).to.deep.equal({ success: true });
+            Code.expect(response.result).to.deep.equal({ response: 'Yeah' });
+
+            done();
+        });
+    });
+
+    lab.test('DELETE returns correct json', (done) => {
+
+        request = {
+            method: 'DELETE',
+            url: '/api/endpoint/delete/foo'
+        };
+
+        server.inject(request, (response) => {
+
+            Code.expect(response.statusCode).to.equal(200);
+            Code.expect(response.result).to.deep.equal({ response: 'Yeah' });
 
             done();
         });

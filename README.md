@@ -125,7 +125,7 @@ The configuration object in Detail:
 	  `http://localhost:8081/api/articles` will return a 404 error.
 * `statusCode: 401`
 	* Optional
-	* Every rout of this endpoint will return a http error with the given status code.
+	* Every route of this endpoint will return a http error with the given status code.
 
 ## Related
 

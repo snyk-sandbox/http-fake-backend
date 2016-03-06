@@ -10,7 +10,7 @@ const Endpoint = SetupEndpoint({
     name: 'statuscode',
     urls: [
         {
-            templateFile: '/test/server/api/fixtures/response.json'
+            response: '/test/server/api/fixtures/response.json'
         }
     ],
     statusCode: 401

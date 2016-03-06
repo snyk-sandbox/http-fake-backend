@@ -6,7 +6,7 @@
 
 # http-fake-backend
 
-> Build a fake backend by providing the content of JSON files through configurable routes.
+> Build a fake backend by providing the content of JSON files or JavaScript objects through configurable routes.
 
 Comes as a Node.js server. Useful for mocking, testing and developing independent of the »real« backend.
 
@@ -19,7 +19,7 @@ Let’s say you need an endpoint like <http://localhost:8081/api/foo> which shou
 }
 ```
 
-It’s a matter of seconds to create this endpoint with help of this little hapi server and a JSON file.
+It’s a matter of seconds to create this endpoint with help of this little hapi server.
 
 It might take a few seconds longer as setting up the well-made [JSON Server](https://github.com/typicode/json-server) but it’s way more flexible.
 
@@ -60,6 +60,59 @@ npm start
 Just fires up the server via node.  
 This one comes is without any magic (eg. `foreverjs`)
 
+## Configuring endpoints
+
+Each endpoint needs a configuration file in `/server/api/` to define routes, http method and the response.
+
+### Example configuration
+
+`/server/api/articles.js`:
+
+```js
+module.exports = SetupEndpoint({
+    name: 'articles',
+    urls: [
+        {
+            params: '/{filter}/{offset}/{items}',
+            response: '/json-templates/articles.json',
+            method: 'GET'
+        },
+        {
+            params: '/post',
+            response: {
+                success: true
+            },
+            method: 'POST'
+        }
+    ],
+    statusCode: 505
+});
+```
+
+The configuration object in Detail:
+
+* `name`  
+	* Is used to set the endpoint.
+* `urls`
+	* You need add least one url object.
+* `urls.params`
+	* Optional
+	* In this example a valid URL might be:
+	  `http://localhost:8081/api/articles/foo/bar/baz`
+	  whereas:
+	  `http://localhost:8081/api/articles` will return a 404 error.
+* `urls.response` 
+	* Could be a string pointing out to a JSON template:
+		*   `response: '/json-templates/articles.json'`
+	* Or just a JavaScript object:
+		* `response: { success: true }`
+* `urls.method` 
+	* optional. Uses `GET` when not defined.
+	* is used to define the http method to which the endpoint will listen.
+* `statusCode`
+	* Optional
+	* Every route of this endpoint will return a http error with the given status code.
+
 ## Configuration
 
 The app needs to have a config file named `.env` with the following content:
@@ -76,56 +129,6 @@ SERVER_PORT=8081
 TEST_PORT=9090
 ```
 
-## Configuring endpoints
-
-Each endpoint needs the following:
-
-* a JSON template file in `/json-templates/`
-	* This JSON will be returned by the endpoint.
-* a configuration file in `/server/api/`
-
-### Example configuration
-
-`/server/api/articles.js`:
-
-```js
-module.exports = SetupEndpoint({
-    name: 'articles',
-    urls: [
-        {
-            params: '/{filter}/{offset}/{items}',
-            templateFile: 'articles.json',
-            method: 'GET'
-        },
-        {
-            params: '/post',
-            templateFile: 'success.json',
-            method: 'POST'
-        }
-    ],
-    statusCode: 505
-});
-```
-
-The configuration object in Detail:
-
-* `name: 'articles'`  
-	* Is used to set the endpoint.
-* `urls`
-	* You need add least one url object.
-* `urls.method: 'GET'` 
-	* optional. Uses `GET` when not defined.
-	* is used to define the http method to which the endpoint will listen.
-* `urls.params: '/{filter}/{offset}/{items}'`
-	* Optional
-	* The endpoint will need the amount of params within the URL if defined.
-	* In this example a valid URL might be:
-	  `http://localhost:8081/api/articles/foo/bar/baz`
-	  whereas:
-	  `http://localhost:8081/api/articles` will return a 404 error.
-* `statusCode: 401`
-	* Optional
-	* Every route of this endpoint will return a http error with the given status code.
 
 ## Related
 

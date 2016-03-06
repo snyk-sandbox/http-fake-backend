@@ -27,10 +27,15 @@ module.exports = function (settings) {
                         response = Boom.create(settings.statusCode);
                     }
                     else {
-                        if (method === 'POST') {
-                            server.log('info', 'Received POST:' + JSON.stringify(request.payload));
+                        server.log('info', 'Received payload:' + JSON.stringify(request.payload));
+
+                        if (typeof url.response === 'string') {
+                            response = require('../../..' + url.response);
                         }
-                        response = require('../../..' + url.templateFile);
+                        else {
+                            response = url.response;
+                        }
+
                     }
 
                     return reply(response);

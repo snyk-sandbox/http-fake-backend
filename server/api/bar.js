@@ -7,17 +7,21 @@ module.exports = SetupEndpoint({
     urls: [
         {
             params: '/read',
-            templateFile: '/json-templates/bar.json',
+            response: '/json-templates/bar.json',
             method: 'GET'
         },
         {
             params: '/update/{id}',
-            templateFile: '/json-templates/success.json',
+            response: {
+                success: true
+            },
             method: 'POST'
         },
         {
             params: '/delete/{id}',
-            templateFile: '/json-templates/success.json',
+            response: {
+                success: true
+            },
             method: 'DELETE'
         }
     ]

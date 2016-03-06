@@ -1,10 +1,17 @@
 'use strict';
 
 /**
- * Returns the given string without curly braces.
+ * Returns the given params without curly braces.
  */
 
-module.exports = function (string) {
+module.exports = function (params) {
 
-    return string.replace(/({|})/g, '');
+    if (typeof params === 'string') {
+        params = params.replace(/({|})/g, '');
+    }
+    else {
+        params = '';
+    }
+
+    return params;
 };

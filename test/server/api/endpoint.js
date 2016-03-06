@@ -10,21 +10,27 @@ const Endpoint = SetupEndpoint({
     name: 'endpoint',
     urls: [
         {
-            templateFile: '/test/server/api/fixtures/response.json'
+            response: '/test/server/api/fixtures/response.json'
+        },
+        {
+            params: '/object',
+            response: {
+                javascript: 'object'
+            }
         },
         {
             params: '/read',
-            templateFile: '/test/server/api/fixtures/response.json',
+            response: '/test/server/api/fixtures/response.json',
             method: 'GET'
         },
         {
             params: '/update/{id}',
-            templateFile: '/test/server/api/fixtures/response.json',
+            response: '/test/server/api/fixtures/response.json',
             method: 'POST'
         },
         {
             params: '/delete/{id}',
-            templateFile: '/test/server/api/fixtures/response.json',
+            response: '/test/server/api/fixtures/response.json',
             method: 'DELETE'
         }
     ]
@@ -109,7 +115,23 @@ lab.experiment('Setup endpoints', () => {
         });
     });
 
-    lab.test('GET returns correct json', (done) => {
+    lab.test('returns correct json from JavaScript object', (done) => {
+
+        request = {
+            method: 'GET',
+            url: '/api/endpoint/object'
+        };
+
+        server.inject(request, (response) => {
+
+            Code.expect(response.statusCode).to.equal(200);
+            Code.expect(response.result).to.deep.equal({ javascript: 'object' });
+
+            done();
+        });
+    });
+
+    lab.test('returns correct json from JSON template', (done) => {
 
         request = {
             method: 'GET',

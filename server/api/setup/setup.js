@@ -1,11 +1,12 @@
 'use strict';
 
 const Boom = require('boom');
+const Config = require('../../../config');
 
 module.exports = function (settings) {
 
     const exportEndpoint = {};
-    const path = '/api/' + settings.name;
+    const path = Config.get('/apiUrlPrefix') + '/' + settings.name;
     const urls = settings.urls;
 
     exportEndpoint.register = function (server, options, next) {

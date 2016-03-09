@@ -12,6 +12,7 @@ const config = {
     $meta: 'General project wide config.',
     projectName: 'http-fake-backend',
     env: process.env.NODE_ENV,
+    apiUrlPrefix: process.env.API_PREFIX,
     port: {
         web: {
             $filter: 'env',

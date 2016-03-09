@@ -115,7 +115,7 @@ The configuration object in Detail:
 
 ## Configuration
 
-The app needs to have a config file named `.env` with the following content:
+The main config is handled via a file named `.env` with the following content:
 
 ```dosini
 # NODE_ENV
@@ -127,6 +127,11 @@ SERVER_PORT=8081
 
 # Port for running the tests
 TEST_PORT=9090
+
+# URL Prefix for the endpoints
+# eg. http://localhost:8081/api/foo
+API_PREFIX=/api
+
 ```
 
 

@@ -6,6 +6,8 @@ const Config = require('../../../config');
 const Hapi = require('hapi');
 const SetupEndpoint = require('../../../server/api/setup/setup.js');
 
+const apiUrlPrefix = Config.get('/apiUrlPrefix');
+
 const Endpoint = SetupEndpoint({
     name: 'statuscode',
     urls: [
@@ -47,7 +49,7 @@ lab.experiment('Fake status code', () => {
 
         request = {
             method: 'GET',
-            url: '/api/statuscode'
+            url: apiUrlPrefix + '/statuscode'
         };
 
         server.inject(request, (response) => {
@@ -62,7 +64,7 @@ lab.experiment('Fake status code', () => {
 
         request = {
             method: 'PUT',
-            url: '/api/statuscode'
+            url: apiUrlPrefix + '/statuscode'
         };
 
         server.inject(request, (response) => {

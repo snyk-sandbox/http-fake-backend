@@ -6,6 +6,8 @@ const Config = require('../../../config');
 const Hapi = require('hapi');
 const SetupEndpoint = require('../../../server/api/setup/setup.js');
 
+const apiUrlPrefix = Config.get('/apiUrlPrefix');
+
 const Endpoint = SetupEndpoint({
     name: 'endpoint',
     urls: [
@@ -69,7 +71,7 @@ lab.experiment('Setup endpoints', () => {
 
         request = {
             method: 'POST',
-            url: '/api/baz'
+            url: apiUrlPrefix + '/baz'
         };
 
         server.inject(request, (response) => {
@@ -84,7 +86,7 @@ lab.experiment('Setup endpoints', () => {
 
         request = {
             method: 'post',
-            url: '/api/endpoint/read'
+            url: apiUrlPrefix + '/endpoint/read'
         };
 
         server.inject(request, (response) => {
@@ -103,7 +105,7 @@ lab.experiment('Setup endpoints', () => {
 
         request = {
             method: 'GET',
-            url: '/api/endpoint'
+            url: apiUrlPrefix + '/endpoint'
         };
 
         server.inject(request, (response) => {
@@ -119,7 +121,7 @@ lab.experiment('Setup endpoints', () => {
 
         request = {
             method: 'GET',
-            url: '/api/endpoint/object'
+            url: apiUrlPrefix + '/endpoint/object'
         };
 
         server.inject(request, (response) => {
@@ -135,7 +137,7 @@ lab.experiment('Setup endpoints', () => {
 
         request = {
             method: 'GET',
-            url: '/api/endpoint/read'
+            url: apiUrlPrefix + '/endpoint/read'
         };
 
         server.inject(request, (response) => {
@@ -151,7 +153,7 @@ lab.experiment('Setup endpoints', () => {
 
         request = {
             method: 'POST',
-            url: '/api/endpoint/update/foo'
+            url: apiUrlPrefix + '/endpoint/update/foo'
         };
 
         server.inject(request, (response) => {
@@ -167,7 +169,7 @@ lab.experiment('Setup endpoints', () => {
 
         request = {
             method: 'DELETE',
-            url: '/api/endpoint/delete/foo'
+            url: apiUrlPrefix + '/endpoint/delete/foo'
         };
 
         server.inject(request, (response) => {

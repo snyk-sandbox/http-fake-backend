@@ -12,28 +12,43 @@ const Endpoint = SetupEndpoint({
     name: 'endpoint',
     urls: [
         {
-            response: '/test/server/api/fixtures/response.json'
+            requests: [
+                { response: '/test/server/api/fixtures/response.json' }
+            ]
         },
         {
             params: '/object',
-            response: {
-                javascript: 'object'
-            }
+            requests: [{
+                response: {
+                    javascript: 'object'
+                }
+            }]
         },
         {
             params: '/read',
-            response: '/test/server/api/fixtures/response.json',
-            method: 'GET'
+            requests: [{
+                method: 'GET',
+                response: '/test/server/api/fixtures/response.json'
+            }]
         },
         {
             params: '/update/{id}',
-            response: '/test/server/api/fixtures/response.json',
-            method: 'POST'
+            requests: [{
+                method: 'PUT',
+                response: '/test/server/api/fixtures/response.json'
+            }, {
+                method: 'PATCH',
+                response: {
+                    success: true
+                }
+            }]
         },
         {
             params: '/delete/{id}',
-            response: '/test/server/api/fixtures/response.json',
-            method: 'DELETE'
+            requests: [{
+                method: 'DELETE',
+                response: '/test/server/api/fixtures/response.json'
+            }]
         }
     ]
 });
@@ -149,10 +164,10 @@ lab.experiment('Setup endpoints', () => {
         });
     });
 
-    lab.test('POST returns correct json', (done) => {
+    lab.test('PUT returns correct json', (done) => {
 
         request = {
-            method: 'POST',
+            method: 'PUT',
             url: apiUrlPrefix + '/endpoint/update/foo'
         };
 
@@ -160,6 +175,22 @@ lab.experiment('Setup endpoints', () => {
 
             Code.expect(response.statusCode).to.equal(200);
             Code.expect(response.result).to.deep.equal({ response: 'Yeah' });
+
+            done();
+        });
+    });
+
+    lab.test('PATCH on same route returns different json', (done) => {
+
+        request = {
+            method: 'PATCH',
+            url: apiUrlPrefix + '/endpoint/update/foo'
+        };
+
+        server.inject(request, (response) => {
+
+            Code.expect(response.statusCode).to.equal(200);
+            Code.expect(response.result).to.deep.equal({ success: true });
 
             done();
         });

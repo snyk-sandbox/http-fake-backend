@@ -13,35 +13,41 @@ module.exports = function (settings) {
 
         const routes = [];
 
-        const createRoutes = function (url, index) {
+        const createRoutes = function (url) {
 
-            const method = url.method || 'GET';
             const params = url.params || '';
-            const supportedMethod = {
-                method: method,
-                path: path + params,
-                handler: function (request, reply) {
 
-                    let response;
+            url.requests.forEach((action) => {
 
-                    if (settings.statusCode) {
-                        response = Boom.create(settings.statusCode);
-                    }
-                    else {
-                        server.log('info', 'Received payload:' + JSON.stringify(request.payload));
+                const method = action.method || 'GET';
+                const supportedMethod = {
+                    method: method,
+                    path: path + params,
+                    handler: function (request, reply) {
 
-                        if (typeof url.response === 'string') {
-                            response = require('../../..' + url.response);
+                        let response;
+
+                        if (settings.statusCode) {
+                            response = Boom.create(settings.statusCode);
                         }
                         else {
-                            response = url.response;
+                            server.log('info', 'Received payload:' + JSON.stringify(request.payload));
+
+                            if (typeof action.response === 'string') {
+                                response = require('../../..' + action.response);
+                            }
+                            else {
+                                response = action.response;
+                            }
+
                         }
 
+                        return reply(response);
                     }
+                };
+                routes.push(supportedMethod);
+            });
 
-                    return reply(response);
-                }
-            };
             const unsupportedMethods = {
                 method: '*',
                 path: path + params,
@@ -60,7 +66,6 @@ module.exports = function (settings) {
                 }
             };
 
-            routes.push(supportedMethod);
             routes.push(unsupportedMethods);
         };
 

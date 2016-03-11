@@ -10,11 +10,11 @@ const apiUrlPrefix = Config.get('/apiUrlPrefix');
 
 const Endpoint = SetupEndpoint({
     name: 'statuscode',
-    urls: [
-        {
-            response: '/test/server/api/fixtures/response.json'
-        }
-    ],
+    urls: [{
+        requests: [
+            { response: '/test/server/api/fixtures/response.json' }
+        ]
+    }],
     statusCode: 401
 });
 

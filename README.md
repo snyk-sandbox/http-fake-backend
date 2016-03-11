@@ -1,7 +1,8 @@
-[![Dependency Status](https://david-dm.org/micromata/http-fake-backend.svg)](https://david-dm.org/micromata/http-fake-backend)
-[![devDependency Status](https://david-dm.org/micromata/http-fake-backend/dev-status.svg?theme=shields.io)](https://david-dm.org/micromata/http-fake-backend#info=devDependencies)
+[![GitHub version](https://badge.fury.io/gh/micromata%2Fhttp-fake-backend.svg)](https://badge.fury.io/gh/micromata%2Fhttp-fake-backend)
 [![Build Status](https://travis-ci.org/micromata/http-fake-backend.svg?branch=master)](https://travis-ci.org/micromata/http-fake-backend)
 [![Coverage Status](https://coveralls.io/repos/github/micromata/http-fake-backend/badge.svg?branch=master)](https://coveralls.io/github/micromata/http-fake-backend?branch=master)
+[![Dependency Status](https://david-dm.org/micromata/http-fake-backend.svg)](https://david-dm.org/micromata/http-fake-backend)
+[![devDependency Status](https://david-dm.org/micromata/http-fake-backend/dev-status.svg?theme=shields.io)](https://david-dm.org/micromata/http-fake-backend#info=devDependencies)
 [![Unicorn](https://img.shields.io/badge/unicorn-approved-ff69b4.svg?style=flat)](https://www.youtube.com/watch?v=qRC4Vk6kisY) 
 
 # http-fake-backend
@@ -74,15 +75,20 @@ module.exports = SetupEndpoint({
     urls: [
         {
             params: '/{filter}/{offset}/{items}',
-            response: '/json-templates/articles.json',
-            method: 'GET'
+            requests: [{
+                method: 'GET',
+                response: '/json-templates/articles.json'
+            }]
         },
         {
-            params: '/post',
-            response: {
-                success: true
-            },
-            method: 'POST'
+            params: '/update',
+            requests: [{
+                method: 'PATCH',
+                response: { patch: true }
+            },{
+                method: 'PUT',
+                response: { put: true }
+            }]  
         }
     ],
     statusCode: 505
@@ -101,14 +107,16 @@ The configuration object in Detail:
 	  `http://localhost:8081/api/articles/foo/bar/baz`
 	  whereas:
 	  `http://localhost:8081/api/articles` will return a 404 error.
-* `urls.response` 
+* `urls.requests`
+    *  You need add least one request object.
+* `urls.requests.method` 
+    * optional. Uses `GET` when not defined.
+    * is used to define the http method to which the endpoint will listen.
+* `urls.requests.response` 
 	* Could be a string pointing out to a JSON template:
 		*   `response: '/json-templates/articles.json'`
 	* Or just a JavaScript object:
 		* `response: { success: true }`
-* `urls.method` 
-	* optional. Uses `GET` when not defined.
-	* is used to define the http method to which the endpoint will listen.
 * `statusCode`
 	* Optional
 	* Every route of this endpoint will return a http error with the given status code.

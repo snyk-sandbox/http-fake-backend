@@ -10,7 +10,7 @@
             {{#each this.urls}}
                 <li>
                     <a href="{{../this.path}}{{removeCurlyBraces this.params}}">{{../this.name}}{{this.params}}</a>
-                    <span class="method">({{method this.method}})</span>
+                    <span class="method">({{methods this.requests}})</span>
                 </li>
             {{/each}}
         {{/each}}

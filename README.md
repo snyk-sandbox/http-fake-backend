@@ -30,10 +30,19 @@ It might take a few seconds longer as setting up the well-made [JSON Server](htt
 
 ## Install
 
+```bash
+git clone https://github.com/micromata/http-fake-backend.git
+npm install
 ```
-$ git clone https://github.com/micromata/http-fake-backend.git
-$ npm install
+
+Or with help of [Yeoman](http://yeoman.io)
+
+```bash
+npm install -g yo
+npm install -g generator-http-fake-backend
 ```
+
+This comes in handy, because the Yeoman generator has a sub-generator to setup endpoints of your fake backend very convenient. See <https://github.com/micromata/generator-http-fake-backend>.
 
 ## Default Address
 The server runs at <http://localhost:8081/> providing a page with links to all existing API endpoints.
@@ -144,6 +153,12 @@ API_PREFIX=/api
 ```
 
 
+## License
+
+Please be aware of the licenses of the components we use in this project.
+Everything else that has been developed by the contributions to this project is under [MIT License](LICENSE).
+
 ## Related
 
-* [JSON Server](https://github.com/typicode/json-server) – an easy to use but less flexible alternative to server json files.
+* [Yeoman Generator](https://github.com/micromata/generator-http-fake-backend) – Easily generate your fake backend and use sub-generators to setup endpoints  like :zap:
+

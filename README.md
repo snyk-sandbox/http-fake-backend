@@ -107,6 +107,7 @@ The configuration object in Detail:
 	  `http://localhost:8081/api/articles/foo/bar/baz`
 	  whereas:
 	  `http://localhost:8081/api/articles` will return a 404 error.
+	* See hapi docs regarding [path parameters](http://hapijs.com/api#path-parameters).
 * `urls.requests`
     *  You need add least one request object.
 * `urls.requests.method` 

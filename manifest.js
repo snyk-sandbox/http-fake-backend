@@ -59,16 +59,21 @@ const manifest = {
             plugin: {
                 register: 'good',
                 options: {
-                    reporters: [{
-                        reporter: require('good-console'),
-                        events: {
-                            response: '*',
-                            log: '*'
-                        },
-                        config: {
-                            format: 'YYYY-MM-DD/HH:mm:ss.SSS'
-                        }
-                    }]
+                    ops: {
+                        interval: 15000
+                    },
+                    reporters: {
+                        console: [{
+                            module: 'good-squeeze',
+                            name: 'Squeeze',
+                            args: [{
+                                log: '*',
+                                response: '*'
+                            }]
+                        }, {
+                            module: 'good-console'
+                        }, 'stdout']
+                    }
                 }
             }
         },

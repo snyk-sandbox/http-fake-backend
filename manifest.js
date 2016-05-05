@@ -71,7 +71,8 @@ const manifest = {
                                 response: '*'
                             }]
                         }, {
-                            module: 'good-console'
+                            module: 'good-console',
+                            args: [{ format: 'YYYY-MM-DD/HH:mm:ss.SSS' }]
                         }, 'stdout']
                     }
                 }

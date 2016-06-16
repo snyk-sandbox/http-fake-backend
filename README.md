@@ -107,29 +107,29 @@ module.exports = SetupEndpoint({
 The configuration object in Detail:
 
 * `name`  
-	* Is used to set the endpoint.
+  * Is used to set the endpoint.
 * `urls`
-	* You need add least one url object.
+  * You need to add at least one url object.
 * `urls.params`
-	* Optional
-	* In this example a valid URL might be:
-	  `http://localhost:8081/api/articles/foo/bar/baz`
-	  whereas:
-	  `http://localhost:8081/api/articles` will return a 404 error.
-	* See hapi docs regarding [path parameters](http://hapijs.com/api#path-parameters).
+  * Optional
+  * In this example a valid URL might be:
+    `http://localhost:8081/api/articles/foo/bar/baz`
+    whereas:
+    `http://localhost:8081/api/articles` will return a 404 error.
+  * See hapi docs regarding [path parameters](http://hapijs.com/api#path-parameters).
 * `urls.requests`
-    *  You need add least one request object.
+    *  You need to add at least one request object.
 * `urls.requests.method` 
     * optional. Uses `GET` when not defined.
     * is used to define the http method to which the endpoint will listen.
 * `urls.requests.response` 
-	* Could be a string pointing out to a JSON template:
-		*   `response: '/json-templates/articles.json'`
-	* Or just a JavaScript object:
-		* `response: { success: true }`
+  * Could be a string pointing to a JSON template:
+    *   `response: '/json-templates/articles.json'`
+  * Or just a JavaScript object:
+    * `response: { success: true }`
 * `statusCode`
-	* Optional
-	* Every route of this endpoint will return a http error with the given status code.
+  * Optional
+  * Every route of this endpoint will return a http error with the given status code.
 
 ## Configuration
 

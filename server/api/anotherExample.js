@@ -3,12 +3,12 @@
 const SetupEndpoint = require('./setup/setup.js');
 
 module.exports = SetupEndpoint({
-    name: 'bar',
+    name: 'anotherExample',
     urls: [{
         params: '/read',
         requests: [{
             method: 'GET',
-            response: '/json-templates/bar.json'
+            response: '/json-templates/anotherExample.json'
         }]
     }, {
         params: '/update/{id}',

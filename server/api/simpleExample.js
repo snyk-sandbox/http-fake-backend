@@ -3,11 +3,10 @@
 const SetupEndpoint = require('./setup/setup.js');
 
 module.exports = SetupEndpoint({
-    name: 'foo',
+    name: 'simpleExample',
     urls: [{
         requests: [
-            { response: '/json-templates/foo.json' }
+            { response: '/json-templates/simpleExample.json' }
         ]
-    }]/*,
-    statusCode: 401*/
+    }]
 });

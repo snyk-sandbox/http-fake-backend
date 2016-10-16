@@ -35,7 +35,7 @@ git clone https://github.com/micromata/http-fake-backend.git
 npm install
 ```
 
-*Hint: Use `yarn install` instead of `npm install` if you have installed [Yarn](https://yarnpkg.com/)… and yup, we have a lock file :sparkling_heart:*
+*Hint: Use `yarn install` instead of `npm install` if you have installed [Yarn](https://yarnpkg.com/) … and yup, we have a lock file* :sparkling_heart:
 
 
 Or with help of [Yeoman](http://yeoman.io)

@@ -1,13 +1,10 @@
 language: node_js
 node_js:
+  - '7'
   - '6'
   - '5'
   - '4'
-before_install:
-- npm install yarn -g
-install:
-- yarn install
-script:
-- yarn test
-- yarn run coveralls
-
+cache:
+  yarn: true
+  directories:
+    - node_modules

@@ -257,6 +257,13 @@ call@3.x.x:
     boom "3.x.x"
     hoek "4.x.x"
 
+call@4.x.x:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/call/-/call-4.0.0.tgz#cd29381a98046a132db26e2628e70bd8321a1ddf"
+  dependencies:
+    boom "4.x.x"
+    hoek "4.x.x"
+
 caller-path@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/caller-path/-/caller-path-0.1.0.tgz#94085ef63581ecd3daa92444a8fe94e82577751f"
@@ -676,9 +683,9 @@ eslint@3.9.x:
     text-table "~0.2.0"
     user-home "^2.0.0"
 
-eslint@^3.11.0:
-  version "3.11.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.11.0.tgz#41d34f8b3e69949beee5c097ff4e75ad13ba2d00"
+eslint@^3.11.1:
+  version "3.11.1"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.11.1.tgz#408be581041385cba947cd8d1cd2227782b55dbf"
   dependencies:
     babel-code-frame "^6.16.0"
     chalk "^1.1.3"
@@ -1010,12 +1017,12 @@ good-squeeze@^5.0.1:
     fast-safe-stringify "1.1.0"
     hoek "4.x.x"
 
-good@7.0.2:
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/good/-/good-7.0.2.tgz#8a9f5e6b2654cb828c0145a04eade302f8c65985"
+good@^7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/good/-/good-7.1.0.tgz#9e05ad24c58a11b71cf5081700f3778db0b22c1c"
   dependencies:
-    hoek "3.x.x"
-    joi "7.x.x"
+    hoek "4.x.x"
+    joi "10.x.x"
     oppsy "1.x.x"
     pumpify "1.3.x"
 
@@ -1087,14 +1094,14 @@ hapi-scope-start@2.x.x:
     subtext "^4.2.x"
     topo "2.x.x"
 
-hapi@^15.2.0:
-  version "15.2.0"
-  resolved "https://registry.yarnpkg.com/hapi/-/hapi-15.2.0.tgz#5704ca2c04b6386c03caf9ee901f1de080316d23"
+hapi@^16.0.1:
+  version "16.0.1"
+  resolved "https://registry.yarnpkg.com/hapi/-/hapi-16.0.1.tgz#5862d930ab347ee95ca64f475fb08c91fda85f14"
   dependencies:
     accept "2.x.x"
     ammo "2.x.x"
     boom "4.x.x"
-    call "3.x.x"
+    call "4.x.x"
     catbox "7.x.x"
     catbox-memory "2.x.x"
     cryptiles "3.x.x"
@@ -1102,7 +1109,7 @@ hapi@^15.2.0:
     hoek "4.x.x"
     iron "4.x.x"
     items "2.x.x"
-    joi "9.x.x"
+    joi "10.x.x"
     mimos "3.x.x"
     podium "^1.2.x"
     shot "3.x.x"
@@ -1154,10 +1161,6 @@ hoek@2.x.x:
   version "2.16.3"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
 
-hoek@3.x.x:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/hoek/-/hoek-3.0.4.tgz#268adff66bb6695c69b4789a88b1e0847c3f3123"
-
 hoek@4.x.x:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-4.1.0.tgz#4a4557460f69842ed463aa00628cc26d2683afa7"
@@ -1186,15 +1189,15 @@ imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
 
-inert@4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/inert/-/inert-4.0.2.tgz#f26094988e653f81c84a690664781546f8d75928"
+inert@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/inert/-/inert-4.0.3.tgz#da8cd692c1ff962fa2da330c757b1e54f1ac9d92"
   dependencies:
     ammo "2.x.x"
-    boom "3.x.x"
+    boom "4.x.x"
     hoek "4.x.x"
     items "2.x.x"
-    joi "9.x.x"
+    joi "10.x.x"
     lru-cache "4.0.x"
 
 infinity-agent@^2.0.0:
@@ -1403,27 +1406,18 @@ jodid25519@^1.0.0:
   dependencies:
     jsbn "~0.1.0"
 
-joi@7.x.x:
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/joi/-/joi-7.3.0.tgz#4d9c9f181830444083665b5b6cd5b8ca6779a5e9"
+joi@10.x.x:
+  version "10.0.5"
+  resolved "https://registry.yarnpkg.com/joi/-/joi-10.0.5.tgz#2e43af9bf24d2d5745852e9ab968c85be357bd6a"
   dependencies:
-    hoek "3.x.x"
+    hoek "4.x.x"
     isemail "2.x.x"
-    moment "2.x.x"
+    items "2.x.x"
     topo "2.x.x"
 
 joi@8.1.x:
   version "8.1.1"
   resolved "https://registry.yarnpkg.com/joi/-/joi-8.1.1.tgz#2d8b52a5d909d217ed47248577eefe8b1798f48f"
-  dependencies:
-    hoek "4.x.x"
-    isemail "2.x.x"
-    moment "2.x.x"
-    topo "2.x.x"
-
-joi@8.x.x:
-  version "8.4.2"
-  resolved "https://registry.yarnpkg.com/joi/-/joi-8.4.2.tgz#bd7774658fe99058d8994ed1d4b9962484ebb859"
   dependencies:
     hoek "4.x.x"
     isemail "2.x.x"
@@ -2062,7 +2056,7 @@ read-pkg@^1.0.0:
     normalize-package-data "^2.3.2"
     path-type "^1.0.0"
 
-readable-stream@^2.0.0, "readable-stream@^2.0.0 || ^1.1.13", readable-stream@^2.0.2, readable-stream@~2.1.4:
+readable-stream@^2.0.0, "readable-stream@^2.0.0 || ^1.1.13", readable-stream@~2.1.4:
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.1.5.tgz#66fa8b720e1438b364681f2ad1a63c618448c9d0"
   dependencies:
@@ -2074,7 +2068,7 @@ readable-stream@^2.0.0, "readable-stream@^2.0.0 || ^1.1.13", readable-stream@^2.
     string_decoder "~0.10.x"
     util-deprecate "~1.0.1"
 
-readable-stream@~2.0.0, readable-stream@~2.0.5:
+readable-stream@^2.0.2, readable-stream@~2.0.0, readable-stream@~2.0.5:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.0.6.tgz#8f90341e68a53ccc928788dacfcd11b36eb9b78e"
   dependencies:
@@ -2562,14 +2556,14 @@ vise@2.x.x:
   dependencies:
     hoek "4.x.x"
 
-vision@4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/vision/-/vision-4.1.0.tgz#c0c49c9287423cfcf7dbedf51ae6a67b065c6ae7"
+vision@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/vision/-/vision-4.1.1.tgz#e1b612b2d2e2f20310a039290fd49d51248f82da"
   dependencies:
-    boom "3.x.x"
-    hoek "3.x.x"
+    boom "4.x.x"
+    hoek "4.x.x"
     items "2.x.x"
-    joi "8.x.x"
+    joi "10.x.x"
 
 visionary@6.0.2:
   version "6.0.2"

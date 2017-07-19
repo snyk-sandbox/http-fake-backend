@@ -118,7 +118,8 @@ lab.experiment('Setup endpoints', () => {
             Code.expect(response.statusCode).to.equal(405);
             Code.expect(response.result).to.equal({
                 statusCode: 405,
-                error: 'Method Not Allowed'
+                error: 'Method Not Allowed',
+                message: 'Method Not Allowed'
             });
 
             done();
@@ -255,7 +256,8 @@ lab.experiment('Setup endpoints', () => {
             Code.expect(response.statusCode).to.equal(405);
             Code.expect(response.result).to.equal({
                 statusCode: 405,
-                error: 'Method Not Allowed'
+                error: 'Method Not Allowed',
+                message: 'Method Not Allowed'
             });
 
             done();

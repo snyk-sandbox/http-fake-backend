@@ -140,6 +140,7 @@ module.exports = SetupEndpoint({
                 // Returns a 402 status code + error message provided by boom:
                 // {
                 //   "error" : "Payment Required",
+                //   "message" : "Payment Required",
                 //   "statusCode" : 402
                 // }
                 statusCode: 402

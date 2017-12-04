@@ -30,7 +30,7 @@ It might take a few seconds longer as setting up the well-made [JSON Server](htt
 
 ## Requirements
 
-- Node.js (v4.0.0 or greater)
+- Node.js (v6.0.0 or greater)
 
 ## Install
 

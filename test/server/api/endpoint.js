@@ -136,7 +136,7 @@ lab.experiment('Setup endpoints', () => {
         server.inject(request, (response) => {
 
             Code.expect(response.statusCode).to.equal(200);
-            Code.expect(JSON.parse(response.result)).to.equal({ response: 'Yeah' });
+            Code.expect(JSON.parse(response.result)).to.equal({ response: '🐷' });
 
             done();
         });
@@ -168,7 +168,7 @@ lab.experiment('Setup endpoints', () => {
         server.inject(request, (response) => {
 
             Code.expect(response.statusCode).to.equal(200);
-            Code.expect(JSON.parse(response.result)).to.equal({ response: 'Yeah' });
+            Code.expect(JSON.parse(response.result)).to.equal({ response: '🐷' });
 
             done();
         });
@@ -184,7 +184,7 @@ lab.experiment('Setup endpoints', () => {
         server.inject(request, (response) => {
 
             Code.expect(response.statusCode).to.equal(200);
-            Code.expect(JSON.parse(response.result)).to.equal({ response: 'Yeah' });
+            Code.expect(JSON.parse(response.result)).to.equal({ response: '🐷' });
 
             done();
         });
@@ -216,7 +216,7 @@ lab.experiment('Setup endpoints', () => {
         server.inject(request, (response) => {
 
             Code.expect(response.statusCode).to.equal(200);
-            Code.expect(JSON.parse(response.result)).to.equal({ response: 'Yeah' });
+            Code.expect(JSON.parse(response.result)).to.equal({ response: '🐷' });
 
             done();
         });

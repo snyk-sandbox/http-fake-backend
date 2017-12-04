@@ -4,6 +4,8 @@ const Lab = require('lab');
 const Code = require('code');
 const Config = require('../../../config');
 const Hapi = require('hapi');
+const Fs = require('fs');
+const Path = require('path');
 const SetupEndpoint = require('../../../server/api/setup/');
 
 const apiUrlPrefix = Config.get('/apiUrlPrefix');
@@ -14,6 +16,12 @@ const Endpoint = SetupEndpoint({
         params: '/json',
         requests: [{
             response: '/test/server/api/fixtures/response.json'
+        }]
+    }, {
+        params: '/json/download',
+        requests: [{
+            response: '/test/server/api/fixtures/response.json',
+            sendFile: true
         }]
     }, {
         params: '/text',
@@ -86,6 +94,7 @@ lab.experiment('Different file types', () => {
             server.inject(request, (response) => {
 
                 Code.expect(response.headers['content-type']).to.equal('application/json; charset=utf-8');
+                Code.expect(JSON.parse(response.result)).to.equal({ response: '🐷' });
 
                 done();
             });
@@ -101,7 +110,7 @@ lab.experiment('Different file types', () => {
             server.inject(request, (response) => {
 
                 Code.expect(response.headers['content-type']).to.equal('text/plain; charset=utf-8');
-                Code.expect(response.result).to.equal('This is just a plain old text file.\n');
+                Code.expect(response.result).to.equal('This is just a plain old text file ✅\n');
 
                 done();
             });
@@ -117,7 +126,7 @@ lab.experiment('Different file types', () => {
             server.inject(request, (response) => {
 
                 Code.expect(response.headers['content-type']).to.equal('text/html; charset=utf-8');
-                Code.expect(response.result).to.equal('<a href="https://github.com">GitHub</a>\n');
+                Code.expect(response.result).to.equal('<a href="https://github.com">GitHub 💖</a>\n');
                 Code.expect(response.statusCode).to.equal(201);
 
                 done();
@@ -129,6 +138,38 @@ lab.experiment('Different file types', () => {
 
 
     lab.experiment('send files ', () => {
+
+        lab.test('ascii files have correctly encoded content', (done) => {
+
+            request = {
+                method: 'GET',
+                url: apiUrlPrefix + '/fileTypes/json/download'
+            };
+
+            server.inject(request, (response) => {
+
+                Code.expect(JSON.parse(response.result)).to.equal({ response: '🐷' });
+
+                done();
+            });
+        });
+
+        lab.test('binary files have correctly encoded content', (done) => {
+
+            request = {
+                method: 'GET',
+                url: apiUrlPrefix + '/fileTypes/pdf'
+            };
+
+            const fixtureContent = Fs.readFileSync(Path.normalize(Path.join(__dirname, '/fixtures/example.pdf'))).toString();
+
+            server.inject(request, (response) => {
+
+                Code.expect(response.result).to.equal(fixtureContent);
+
+                done();
+            });
+        });
 
         lab.test('send files with the default content-type and the correct name`', (done) => {
 

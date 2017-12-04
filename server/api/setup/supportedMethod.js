@@ -31,7 +31,7 @@ module.exports = function (server, proposedRequest, settings, params, path) {
 
                 if (typeof proposedRequest.response === 'string') {
                     const filePath = Path.normalize(Path.join(__dirname, '../../../', proposedRequest.response));
-                    response = Fs.readFileSync(filePath, 'utf8');
+                    response = Fs.readFileSync(filePath);
                 }
                 else {
                     response = proposedRequest.response;

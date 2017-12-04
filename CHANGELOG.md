@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.0.1"></a>
+## [4.0.1](https://github.com/micromata/http-fake-backend/compare/4.0.0...4.0.1) (2017-12-04)
+
+
+### Bug Fixes
+
+* encoding of binary files send via endpoints ([677b572](https://github.com/micromata/http-fake-backend/commit/677b572))
+
+
+
 <a name="4.0.0"></a>
 # [4.0.0](https://github.com/micromata/http-fake-backend/compare/v3.2.4...v4.0.0) (2017-12-04)
 

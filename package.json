@@ -23,7 +23,7 @@
     "extends": "eslint-config-hapi"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=6.0.0"
   },
   "dependencies": {
     "boom": "^5.2.0",

@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.0.3"></a>
+## [4.0.3](https://github.com/micromata/http-fake-backend/compare/4.0.2...4.0.3) (2018-02-19)
+
+
+### Bug Fixes
+
+* Update dependencies ([89ebc52](https://github.com/micromata/http-fake-backend/commit/89ebc52))
+
+
+
 <a name="4.0.2"></a>
 ## [4.0.2](https://github.com/micromata/http-fake-backend/compare/4.0.1...4.0.2) (2017-12-06)
 

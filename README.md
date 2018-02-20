@@ -60,7 +60,6 @@ npm run start:dev
 ```
 
 This way the server uses `nodemon` to restart itself on changes. 
-This way you don’t have to restart the server in case you changed an endpoint. 
 
 
 ### Later (eg. for tests in CI)
@@ -69,8 +68,7 @@ This way you don’t have to restart the server in case you changed an endpoint.
 npm start
 ```
 
-Just starts the server via node.  
-This one comes is without any magic (eg. `foreverjs`)
+Just starts the server via node.
 
 ## Configuring endpoints
 
